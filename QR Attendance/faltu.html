@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Student Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            margin: 50px auto;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .success-page {
+            display: none;
+            text-align: center;
+            margin-top: 20px; /* Add margin between the form and the success page */
+        }
+        #qrCodeContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px; /* Add margin between the text and the QR code */
+        }
+        #qrCode {
+            margin-top: 10px; /* Adjust margin for the QR code */
+        }
+        #qrText {
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Register - Student Attendance System</h1>
+    </header>
+    
+    <!-- Registration Form -->
+    <form id="registrationForm" onsubmit="return validateForm()" method="post" action="registerServlet">
+        <input type="text" name="fullname" id="fullname" placeholder="Full Name" pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed" required>
+        <input type="text" name="username" id="username" placeholder="Username" pattern="[A-Za-z0-9_]+" title="Only letters, numbers, and underscores are allowed" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+        <div id="password-error" class="error-message" style="display: none;">Passwords do not match</div>
+        <input type="submit" value="Register">
+    </form>
+
+    <!-- Success Page -->
+    <div class="success-page" id="successPage">
+        <h2>Registration Successful</h2>
+        <p id="qrText">Scan the QR code below to proceed:</p>
+        <div id="qrCodeContainer">
+            <div id="qrCode"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Student Attendance System</p>
+    </footer>
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+            var passwordError = document.getElementById("password-error");
+
+            if (password !== confirmPassword) {
+                passwordError.style.display = "block";
+                return false;
+            } else {
+                passwordError.style.display = "none";
+                return true;
+            }
+        }
+
+        // Simulating form submission for demonstration purposes
+        // Replace this with actual form submission to server
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Show success page
+            document.getElementById("registrationForm").style.display = "none";
+            document.getElementById("successPage").style.display = "block";
+
+            // Generate QR Code (for demonstration purposes)
+            generateQRCode();
+        });
+
+        // Function to generate QR Code (for demonstration purposes)
+        function generateQRCode() {
+            var qrCodeDiv = document.getElementById("qrCode");
+            var qrCode = new QRCode(qrCodeDiv, {
+                text: "Your Registration Details",
+                width: 200,
+                height: 200,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+
+    <!-- Include QR Code library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</body>
+</html>

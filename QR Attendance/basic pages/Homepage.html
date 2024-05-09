@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+        section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 40%;
+            position: relative;
+        }
+        img {
+            width: 100px; /* Adjust the width as per your requirement */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Attendance System</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Register</h2>
+            <p>Register on the website</p>
+            <img src="C:\Users\Ridhi Rajput\Desktop\WEBTECH\ICONS USED\digital-signature (1).png" alt="QR Code for Register">
+            <button id="registerBtn">Register</button>
+        </section>
+        <section>
+            <h2>Login</h2>
+            <p>Login to your account</p>
+            <img src="C:\Users\Ridhi Rajput\Desktop\WEBTECH\ICONS USED\LOGIN ICON.png" alt="Login Icon">
+            <button id="loginBtn">Login</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Student Attendance System</p>
+    </footer>
+
+    <script>
+        document.getElementById("registerBtn").addEventListener("click", function() {
+            // Add your register functionality here
+            alert("Register button clicked!");
+        });
+
+        document.getElementById("loginBtn").addEventListener("click", function() {
+            // Add your login functionality here
+            alert("Login button clicked!");
+        });
+    </script>
+</body>
+</html>
